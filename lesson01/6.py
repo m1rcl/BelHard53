@@ -21,6 +21,5 @@ if all(type(item) is float for item in (a1, a2, a3, a4)):
 if any(type(item) is str for item in (a1, a2, a3, a4)):
     print("Хотя бы одна из переменных строка - ", True)
 
-#if all(map(lambda item: True if type(item) is not int else False, ((a1, a3), (a2, a4), (a3, a4)))):
 if any(all(type(item) is int for item in pair) for pair in ((a1, a3), (a2, a4), (a3, a4))):
     print("Хотя бы одна из пар переменных является целочисленным типом - ", True)
