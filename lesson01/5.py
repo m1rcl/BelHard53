@@ -19,4 +19,4 @@
 some_list = ['qwertyu','asdfggh','zxcvbnm','yuiop[]','hjklasd','mnbvnbv']
 
 for item in some_list:
-    print(f"{some_list.index(item)} - {item} - {item[some_list.index(item)]}")
+    print(f"{some_list.index(item)+1} - {item} - {item[some_list.index(item)]}")
