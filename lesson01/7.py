@@ -10,6 +10,6 @@ user_num = input("Введите любое число: ")
 sum_of_digit = 0
 
 for digit in user_num:
-    sum_of_digit += float(digit)**2
+    sum_of_digit += int(digit)**2
 
 print(sum_of_digit)
