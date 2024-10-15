@@ -15,6 +15,6 @@ user_input = ' '
 counter = 0
 while user_input:
     user_input = input(
-        f"Введите строку {counter} для отображения в консоли, либо оставьте пустой для выхода: ")
+        f"Введите строку для отображения в консоли, либо оставьте пустой для выхода: ")
     counter = counter + 1
     printn(user_input)
