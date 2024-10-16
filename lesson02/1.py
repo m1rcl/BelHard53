@@ -35,7 +35,8 @@ class Hero():
         self.strong: int = strong
 
     def print_info(self):
-        return dict(self.name, self.health, self.armor, self.strong)
+        print(f"Перед вами {self.name} со здоровьем {self.health} броней {
+              self.armor} и силой атаки {self.strong}!\n")
 
 # формулы от балды
 # случайный коэффициент модификации урона
@@ -62,21 +63,19 @@ class Hero():
             if self.health > 0:
                 self.kick(enemy)
             else:
-                print(f"Победил {enemy.name}!")
+                print(f"Победил {enemy.name} !")
                 break
             if enemy.health > 0:
                 enemy.kick(self)
             else:
-                print(f"Победил {self.name}!")
+                print(f"Победил {self.name} !")
                 break
 
 
 fighter1 = Hero(name="James Sullivan", health=100, armor=100, strong=2.0,)
 fighter2 = Hero(name="Mike Wazowski", health=100, armor=100, strong=2.0,)
 
-print(f"Сражаются {fighter1.name} со здоровьем {fighter1.health} броней {
-      fighter1.armor} и силой атаки {fighter1.strong}")
-print(f"Сражаются {fighter2.name} со здоровьем {fighter2.health} броней {
-      fighter2.armor} и силой атаки {fighter2.strong}\n")
+fighter1.print_info()
+fighter2.print_info()
 
 fighter1.fight(fighter2)
