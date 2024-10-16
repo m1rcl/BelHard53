@@ -52,7 +52,7 @@ class Hero():
             enemy.armor = 0.0
         enemy.health = round(
             (enemy.health - kick_now*(100 - enemy.armor)/100), 2)
-        print(f"Боец {self.name} наносит удар {
+        print(f"{self.name} наносит удар {
               kick_now} своему сопернику {enemy.name}!")
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
@@ -73,5 +73,10 @@ class Hero():
 
 fighter1 = Hero(name="James Sullivan", health=100, armor=100, strong=2.0,)
 fighter2 = Hero(name="Mike Wazowski", health=100, armor=100, strong=2.0,)
+
+print(f"Сражаются {fighter1.name} со здоровьем {fighter1.health} броней {
+      fighter1.armor} и силой атаки {fighter1.strong}")
+print(f"Сражаются {fighter2.name} со здоровьем {fighter2.health} броней {
+      fighter2.armor} и силой атаки {fighter2.strong}\n")
 
 fighter1.fight(fighter2)
