@@ -30,8 +30,8 @@ import random
 class Hero():
     def __init__(self, name: str, health: int, armor: int, strong: int):
         self.name: str = name
-        self.health: int = health
-        self.armor: int = armor
+        self._health: int = health
+        self._armor: int = armor
         self.strong: int = strong
 
     def print_info(self):
@@ -44,17 +44,34 @@ class Hero():
 # урон зависит от % состояния брони,
 # с броней 0.0 урон проходит на 100% :-)
 
-    def kick(self, enemy, strong=1.0):
-        luck = random.randint(1, 10)
-        kick_now = self.strong * luck
-        if enemy.armor > 0:
-            enemy.armor = round((enemy.armor - kick_now), 2)
+    @property
+    def health(self):
+        return self._health
+
+    @health.setter
+    def health(self, damage):
+        self._health = round((self._health - damage*(100 - self.armor)/100), 2)
+        return self._health
+
+    @property
+    def armor(self):
+        return self._armor
+
+    @armor.setter
+    def armor(self, damage):
+        if self._armor > 0:
+            self._armor -= damage
         else:
-            enemy.armor = 0.0
-        enemy.health = round(
-            (enemy.health - kick_now*(100 - enemy.armor)/100), 2)
+            self._armor = 0.0
+        return self._armor
+
+    def kick(self, enemy, luck=1):
+        luck = random.randint(1, 10)
+        damage = self.strong * luck
+        enemy.armor = damage
+        enemy.health = damage
         print(f"{self.name} наносит удар {
-              kick_now} своему сопернику {enemy.name}!")
+              damage} своему сопернику {enemy.name}!")
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
 
