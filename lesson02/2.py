@@ -259,6 +259,6 @@ fighter3 = Ork(name="Ork1", health=120, armor=75, strong=15.0,
 current_arena.add_warrior(fighter1)
 current_arena.add_warrior(fighter2)
 current_arena.add_warrior(fighter3)
-current_arena.add_warrior(fighter4)
+# current_arena.add_warrior(fighter4)
 
 current_arena.battle()
