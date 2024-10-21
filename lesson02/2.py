@@ -238,6 +238,7 @@ class Arena():
             while current_enemy == current_fighter:
                 current_enemy = random.choice(self.warriors)
             current_fighter.attack(current_enemy)
+            time.sleep(2)
             if current_enemy.health <= 0:
                 print(f"{current_enemy.name} пал в битве\n")
                 current_arena.warriors.remove(current_enemy)
