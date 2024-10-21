@@ -62,12 +62,12 @@ class Hero():
 
     @health.setter
     def health(self, damage: float):
-        self._health = round((self._health - damage*(100 - self.armor)/100), 2)
         if self._health > 0:
+            self._health = round(
+                (self._health - damage*(100 - self.armor)/100), 2)
             return self._health
         elif self._health <= 0:
-            print(f"{self.name} пал в битве\n")
-            current_arena.warriors.remove(self)
+            return self._health
 
     @property
     def armor(self) -> float:
@@ -75,8 +75,8 @@ class Hero():
 
     @armor.setter
     def armor(self, damage: float) -> float:
-        self._armor -= damage
         if self._armor > 0:
+            self._armor -= damage
             return self._armor
         elif self._armor < 0:
             self._armor = 0.0
@@ -85,10 +85,10 @@ class Hero():
             return self._armor
 
     def kick(self, enemy):
-        enemy.armor = self.strong
-        enemy.health = self.strong
         print(f"{self.name} наносит обычный удар на величину {
               self.strong} своему сопернику {enemy.name}")
+        enemy.armor = self.strong
+        enemy.health = self.strong
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
 
@@ -128,11 +128,11 @@ class Mage(Hero):
               self.special_points_name} в количестве {self.special_points} и коэффициентом атаки {self.special_points_k}\n")
 
     def special_attack(self, enemy):
-        enemy.armor = self.strong*self.special_points_k
-        enemy.health = self.strong*self.special_points_k
         self.special_points = 1
         print(f"{self.name} используя {self.special_points_name} наносит спец.удар на величину {
               self.strong*self.special_points_k} своему сопернику {enemy.name}. Осталось {self.special_points} спец.очков")
+        enemy.armor = self.strong*self.special_points_k
+        enemy.health = self.strong*self.special_points_k
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
 
@@ -165,11 +165,11 @@ class Knight(Hero):
               self.special_points_name} в количестве {self.special_points} и коэффициентом атаки {self.special_points_k}\n")
 
     def special_attack(self, enemy):
-        enemy.armor = self.strong*self.special_points_k
-        enemy.health = self.strong*self.special_points_k
         self.special_points = 1
         print(f"{self.name} используя {self.special_points_name} наносит спец.удар на величину {
               self.strong*self.special_points_k} своему сопернику {enemy.name}. Осталось {self.special_points} спец.очков")
+        enemy.armor = self.strong*self.special_points_k
+        enemy.health = self.strong*self.special_points_k
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
 
@@ -202,11 +202,11 @@ class Ork(Hero):
               self.special_points_name} в количестве {self.special_points} и коэффициентом атаки {self.special_points_k}\n")
 
     def special_attack(self, enemy):
-        enemy.armor = self.strong*self.special_points_k
-        enemy.health = self.strong*self.special_points_k
         self.special_points = 1
         print(f"{self.name} используя {self.special_points_name} наносит спец.удар на величину {
               self.strong*self.special_points_k} своему сопернику {enemy.name}. Осталось {self.special_points} спец.очков")
+        enemy.armor = self.strong*self.special_points_k
+        enemy.health = self.strong*self.special_points_k
         print(f"В результате у {enemy.name} остается {
               enemy.armor} единиц брони и {enemy.health} единиц здоровья\n")
 
@@ -238,18 +238,20 @@ class Arena():
             while current_enemy == current_fighter:
                 current_enemy = random.choice(self.warriors)
             current_fighter.attack(current_enemy)
-            # current_enemy.attack(current_fighter)
+            if current_enemy.health <= 0:
+                print(f"{current_enemy.name} пал в битве\n")
+                current_arena.warriors.remove(current_enemy)
 
         print(f"Победил {self.warriors[0].name} !")
 
 
 current_arena: Arena = Arena()
 
-fighter1 = Mage(name="Mage1", health=80, armor=75, strong=5.0,
-                special_points=10, special_points_name='Мана', special_points_k=6)
-fighter2 = Knight(name="Knight1", health=100, armor=125, strong=10.0,
+fighter1 = Mage(name="Mage1", health=80, armor=50, strong=5.0,
+                special_points=10, special_points_name='Мана', special_points_k=10)
+fighter2 = Knight(name="Knight1", health=100, armor=100, strong=10.0,
                   special_points=10, special_points_name='Доблесть', special_points_k=3)
-fighter3 = Ork(name="Ork1", health=120, armor=100, strong=15.0,
+fighter3 = Ork(name="Ork1", health=120, armor=75, strong=15.0,
                special_points=10, special_points_name='Ярость', special_points_k=2)
 
 current_arena.add_warrior(fighter1)
