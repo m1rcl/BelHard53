@@ -223,7 +223,7 @@ class Arena():
         self.warriors: list = warriors
 
     def add_warrior(self, warrior):
-        if warrior.name not in self.warriors:
+        if warrior.name not in [awailable_warrior.name for awailable_warrior in self.warriors]:
             self.warriors.append(warrior)
             warrior.hello()
         else:
@@ -253,9 +253,12 @@ fighter2 = Knight(name="Knight1", health=100, armor=100, strong=10.0,
                   special_points=10, special_points_name='Доблесть', special_points_k=3)
 fighter3 = Ork(name="Ork1", health=120, armor=75, strong=15.0,
                special_points=10, special_points_name='Ярость', special_points_k=2)
+fighter4 = Ork(name="Ork1", health=120, armor=75, strong=15.0,
+               special_points=10, special_points_name='Ярость', special_points_k=2)
 
 current_arena.add_warrior(fighter1)
 current_arena.add_warrior(fighter2)
 current_arena.add_warrior(fighter3)
+current_arena.add_warrior(fighter4)
 
 current_arena.battle()
