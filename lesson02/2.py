@@ -77,10 +77,11 @@ class Hero():
     def armor(self, damage: float) -> float:
         if self._armor > 0:
             self._armor -= damage
-            return self._armor
-        elif self._armor < 0:
-            self._armor = 0.0
-            return self._armor
+            if self._armor < 0:
+                self._armor = 0.0
+                return self._armor
+            else:
+                return self._armor
         else:
             return self._armor
 
