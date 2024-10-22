@@ -65,8 +65,12 @@ class Hero():
         if self._health > 0:
             self._health = round(
                 (self._health - damage*(100 - self.armor)/100), 2)
-            return self._health
-        elif self._health <= 0:
+            if self._health < 0.0:
+                self._health = 0.0
+                return self._health
+            else:
+                return self._health
+        else:
             return self._health
 
     @property
