@@ -133,7 +133,7 @@ def weather_minsk():
 
 
 @app.route("/weather/<city>/")
-def test3(city):
+def weather_city(city):
     try:
         url = "https://api.openweathermap.org/data/2.5/weather"
         params = {
