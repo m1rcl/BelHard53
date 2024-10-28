@@ -134,22 +134,25 @@ def weather_minsk():
 
 @app.route("/weather/<city>/")
 def test3(city):
-    url = "https://api.openweathermap.org/data/2.5/weather"
-    params = {
-        "q": f"{city}",
-        "units": "metric",
-        "APPID": "7505a3a45c2f09d2e4009d8887ceb17f",
-    }
-    res = requests.get(url, params).json()
-    temp = res["main"]["temp"]
+    try:
+        url = "https://api.openweathermap.org/data/2.5/weather"
+        params = {
+            "q": f"{city}",
+            "units": "metric",
+            "APPID": "7505a3a45c2f09d2e4009d8887ceb17f",
+        }
+        res = requests.get(url, params).json()
+        temp = res["main"]["temp"]
 
-    return (
-        html_start
-        + html_weather_city
-        + city.capitalize()
-        + f" - {temp} градусов Цельсия"
-        + html_end
-    )
+        return (
+            html_start
+            + html_weather_city
+            + city.capitalize()
+            + f" - {temp} градусов Цельсия"
+            + html_end
+        )
+    except:
+        return '<h1 style="color:red">введенный город не найден</h1>'
 
 
 @app.errorhandler(404)
