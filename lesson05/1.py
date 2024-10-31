@@ -104,7 +104,7 @@ def duck():
 
 @app.route("/fox/<int:count>/")
 def fox(count):
-    if 1 < count < 11:
+    if 0 < count < 11:
         text = ""
         for i in range(count):
             url = "https://randomfox.ca/floof/"
