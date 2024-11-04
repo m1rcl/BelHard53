@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Регистрация</title>
+</head>
+
+<registration_form>
+    <form action="/registration/" method="POST">
+
+        <p><label>Имя</label><input name="name" type="text" placeholder="*" required></p>
+        <p><label>Логин</label><input name="login" type="text" placeholder="*" required></p>
+        <p><label>Пароль</label><input name="password" type="password" placeholder="*" required></p>
+        <p><label>E-mail</label><input name="email" type="email" placeholder="*" required></p>
+        <p><label>Возраст</label><input name="age" type="number" placeholder="*" required></p>
+        <p>* Обязательные поля для заполнения</p>
+
+        <input type="submit">
+        <input type="reset">
+
+    </form>
+</registration_form>
+
+</html>

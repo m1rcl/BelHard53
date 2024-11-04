@@ -3,6 +3,11 @@ body {
     background-color: bisque;
 }
 
+registration_form {
+    text-align: left;
+    background-color: bisque;
+}
+
 h1 {
     color: red;
 }
