@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Температура в указанном городе</title>
+</head>
+
+<body>
+
+    {% if even_minutes_server %}
+    {% for info in weather_city_list %}
+
+    <h1>Погода на сегодня в {{info['city']}}</h1>
+    <p>Погодные условия: {{info['conditions']}}</p>
+    <p>Текущая температура: {{info['temp']}}°C, ощущается как {{info['feels_like']}}°C</p>
+
+    {% endfor %}
+    {% endif %}
+
+    <a href="/">Вернуться на главную страницу</a>
+
+</body>
+
+</html>
