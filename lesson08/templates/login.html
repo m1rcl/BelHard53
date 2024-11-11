@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<form action="/login/" method="POST">
+
+    {% if messages[0] == "" %}
+    <p align="left"><label>Логин*</label><input name="login" type="text" value="{{user_login}}" required></p>
+    {% else %}
+    <p align="left"><label>Логин*</label><input name="login" type="text" value="{{user_login}}" required>
+        {{messages[0]}} </p>
+    {% endif %}
+
+    {% if messages[1] == "" %}
+    <p align="left"><label>Пароль*</label><input name="password" type="password" required></p>
+    {% else %}
+    <p align="left"><label>Пароль*</label><input name="password" type="password" required> {{messages[1]}} </p>
+    {% endif %}
+
+    <p align="left">* Обязательные поля для заполнения</p>
+
+    <div align="left">
+        <input align="left" type="submit">
+        <input align="left" type="reset">
+    </div>
+
+</form>
+
+
+{% endblock %}
