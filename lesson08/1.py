@@ -144,10 +144,8 @@ def registration():
         password_valid(password, errors_reg)
         email_valid(email, errors_reg)
         age_valid(age, errors_reg)
-        print(errors_reg)
 
         if errors_reg == ["", "", "", "", ""]:
-            print(username, login, password, email, age)
             add_user(username, login, password, email, age)
             return redirect("/")
         else:
