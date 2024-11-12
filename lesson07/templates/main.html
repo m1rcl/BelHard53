@@ -1,42 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <title>Простое веб приложение на Flask</title>
-</head>
+{% block content %}
 
-<body>
-  <header>
-    {% if 'user_id' in session %}
-    <p>Приветствуем Вас, {{session['username']}}!</p>
-    {% endif %}
-    <nav class="topnav">
-      <ul>
-        <li><a href="/">Главная страница</a></li>
-        {% if 'user_id' in session %}
-        <li><a href="/duck/">Рандомная уточка</a></li>
-        <li><a href="/fox/1/">Рандомная лиса</a></li>
-        <li><a href="/clicker/">Кликер</a></li>
-        <li><a href="/weather-minsk/">Погода в Минске</a></li>
-        {% if even_minutes_server %}
-        <li><a href="/weather-5city/">Погода в областных центрах</a></li>
-        {% endif %}
-        <li><a href="/logout/">Выйти</a></li>
-        {% else %}
-        <li><a href="/login/">Войти</a></li>
-        <li><a href="/registration/">Регистрация</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-  </header>
-  <main class="content">
-    {% block content %}
-    {% endblock %}
-  </main>
 
-</body>
 
-</html>
+
+
+{% endblock %}

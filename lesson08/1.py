@@ -326,9 +326,14 @@ def fake_clicker():
         return redirect("/registration/")
 
 
+@app.route("/samples/")
+def samples():
+    return render_template("samples.html")
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("err.html")
 
 
-app.run(port=7777)
+app.run(port=7777, debug=True)

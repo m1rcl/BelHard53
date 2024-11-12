@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Простое веб приложение на Flask</title>
+</head>
+
+<body>
+    <header>
+        <nav class="topnav">
+            <ul>
+                <li><a href="/">Главная страница</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+
+        <h2>Joy of T<sub>E</sub>X</h2>
+        <hr width="500">
+
+        <h2>Евгений Евтушенко</h2>
+        <p>- 1955 -</p>
+        <div>
+            <pre>
+Бывало, спит у ног собака,
+костер занявшийся гудит,
+и женщина из полумрака
+глазами зыбкими глядит.
+            
+Потом под пихтою приляжет
+на куртку рыжую мою
+и мне,
+    задумчивая,
+            скажет:
+«А ну-ка, спой!..» —
+                и я пою.
+            </pre>
+        </div>
+        <hr width="500">
+
+        <table align="center" width="420" border="1" cellpadding="4">
+            <caption>Добыча драгоценных камней</caption>
+            <tr>
+                <th></th>
+                <th>2010</th>
+                <th>2012</th>
+                <th>2014</th>
+            </tr>
+            <tr style="text-align:left">
+                <td>Сапфиры</td>
+                <td rowspan="2">1483</td>
+                <td>4532</td>
+                <td>6743</td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Рубины</td>
+                <td>3835</td>
+                <td>7482</td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Алмазы</td>
+                <td>683</td>
+                <td style="text-align:center" colspan="2">238</td>
+            </tr>
+        </table>
+        <hr width="500">
+
+        <table align="center" width="420" cellpadding="4" style="border: 1px solid red; border-collapse: collapse;">
+            <tr style="border: 1px solid red; border-collapse: collapse;">
+                <th></th>
+                <th>2004</th>
+                <th>2005</th>
+                <th>2006</th>
+            </tr>
+            <tr style="border: 1px solid red; border-collapse: collapse;">
+                <td style="text-align:left">Рубины</td>
+                <td>43</td>
+                <td>51</td>
+                <td>79</td>
+            </tr>
+            <tr style="border: 1px solid red; border-collapse: collapse;">
+                <td style="text-align:left">Изумруды</td>
+                <td>28</td>
+                <td>34</td>
+                <td>48</td>
+            </tr>
+            <tr style="border: 1px solid red; border-collapse: collapse;">
+                <td style="text-align:left">Сапфиры</td>
+                <td>29</td>
+                <td>57</td>
+                <td>36</td>
+            </tr>
+            <tr style="border: 1px solid red; border-collapse: collapse;">
+                <td style="text-align:left">Аметисты</td>
+                <td>23</td>
+                <td>64</td>
+                <td>97</td>
+            </tr>
+        </table>
+        <hr width="500">
+
+        <table align="center" width="460" border="1" cellpadding="4"
+            style="border: 1px solid black; border-collapse: collapse;">
+            <tr style="text-align:left">
+                <th>Название</th>
+                <th>Цвет</th>
+                <th>Твердость по Моосу</th>
+                <th>Формула</th>
+            </tr>
+            <tr style="text-align:left">
+                <td>Алмаз</td>
+                <td>Белый</td>
+                <td style="text-align:center">10</td>
+                <td>C</td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Рубин</td>
+                <td>Красный</td>
+                <td style="text-align:center">9</td>
+                <td>Al<sub>2</sub>O<sub>3</sub></td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Аметист</td>
+                <td>Голубой</td>
+                <td style="text-align:center">7</td>
+                <td>SiO<sub>2</sub></td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Изумруд</td>
+                <td>Зеленый</td>
+                <td style="text-align:center">8</td>
+                <td>Be<sub>3</sub>Al<sub>2</sub>(SiO<sub>3</sub>)<sub>6</sub></td>
+            </tr>
+            <tr style="text-align:left">
+                <td>Сапфир</td>
+                <td>Голубой</td>
+                <td style="text-align:center">9</td>
+                <td>Al<sub>2</sub>O<sub>3</sub></td>
+            </tr>
+        </table>
+        <hr width="500">
+
+        <h1 style="width:626px; margin: auto; text-align: left;">Карта сокровищ</h1>
+        <hr width="700">
+        <img src="https://img.freepik.com/premium-vector/map-treasures-paper-parchment_8071-3421.jpg">
+        <p style="width:626px; margin: auto; text-align: left;">Пройдено: <progress value="70" max="100"></progress>
+        </p>
+        <hr width="700">
+
+        <h1 style="width:480px; margin: auto; text-align: left;">Химические элементы</h1>
+        <hr width="480">
+        <table align="center" width="480" cellpadding="4">
+            <tr style="text-align:left">
+                <td>Номер</td>
+                <td>Название</td>
+                <td>Символ</td>
+                <td>Год</td>
+                <td>Статья</td>
+            </tr>
+            <tr style="text-align:left">
+                <td>1</td>
+                <td><a href="https://ru.wikipedia.org/wiki/Водород">Водород</a></td>
+                <td><strong>H</strong></td>
+                <td>1766</td>
+                <td><img src="https://api.iconify.design/fluent-emoji-flat/memo.svg"></td>
+            </tr>
+            <tr style="text-align:left">
+                <td>2</td>
+                <td><a href="https://ru.wikipedia.org/wiki/Гелий">Гелий</a></td>
+                <td><strong>He</strong></td>
+                <td>1766</td>
+                <td><img src="https://api.iconify.design/fluent-emoji-flat/memo.svg"></td>
+            </tr>
+            <tr style="text-align:left">
+                <td>3</td>
+                <td><a href="https://ru.wikipedia.org/wiki/Бор_(элемент)">Бор</a></td>
+                <td><strong>B</strong></td>
+                <td>1766</td>
+                <td><img src="https://api.iconify.design/fluent-emoji-flat/memo.svg"></td>
+            </tr>
+        </table>
+        <hr width="480">
+
+        <a href="/">Вернуться на главную страницу</a>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>
