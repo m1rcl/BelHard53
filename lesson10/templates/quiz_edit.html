@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block main_menu %}
+{{ super() }}
+{% include 'quiz_menu.html' %}
+{% endblock %}
+
+
+{% block content1 %}
+<div class="questions quiz_form">
+    <div class="questions">
+
+        <form action="">
+            <fieldset>
+                <legend>Измените название</legend>
+                <label>Название</label>
+                <input name="quiz_name" type="text" value="{{ quiz_name }}" required>
+            </fieldset>
+        </form>
+
+        <form action="">
+            <fieldset>
+                <legend>Включенные вопросы</legend>
+                Отметьте вопрос что бы его исключить из КВИЗА
+                <div class="question-row question-hrow">
+                    <div class="quiz-col">№</div>
+                    <div class="quiz-col">Вопрос</div>
+                    <div class="quiz-col">Ответ</div>
+                    <div class="quiz-col">Вариант 1</div>
+                    <div class="quiz-col">Вариант 2</div>
+                    <div class="quiz-col">Вариант 3</div>
+                </div>
+                {% for q in current_questions %}
+                <div class="question-row">
+                    <div class="quiz-col">{{ loop.index }}</div>
+                    <div class="quiz-col">{{ q.question }}</div>
+                    <div class="quiz-col">{{ q.answer }}</div>
+                    <div class="quiz-col">{{ q.wrong1 }}</div>
+                    <div class="quiz-col">{{ q.wrong2 }}</div>
+                    <div class="quiz-col">{{ q.wrong3 }}</div>
+                </div>
+                {% endfor %}
+            </fieldset>
+        </form>
+
+        <form action="">
+            <fieldset>
+                <legend>Остальные вопросы</legend>
+                Отметьте вопрос что бы его включить в КВИЗ
+                <div class="question-row question-hrow">
+                    <div class="quiz-col">№</div>
+                    <div class="quiz-col">Вопрос</div>
+                    <div class="quiz-col">Ответ</div>
+                    <div class="quiz-col">Вариант 1</div>
+                    <div class="quiz-col">Вариант 2</div>
+                    <div class="quiz-col">Вариант 3</div>
+                </div>
+                {% for q in other_questions %}
+                <div class="question-row">
+                    <div class="quiz-col">{{ loop.index }}</div>
+                    <div class="quiz-col">{{ q.question }}</div>
+                    <div class="quiz-col">{{ q.answer }}</div>
+                    <div class="quiz-col">{{ q.wrong1 }}</div>
+                    <div class="quiz-col">{{ q.wrong2 }}</div>
+                    <div class="quiz-col">{{ q.wrong3 }}</div>
+                </div>
+                {% endfor %}
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
