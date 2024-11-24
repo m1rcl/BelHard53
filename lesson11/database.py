@@ -87,7 +87,7 @@ class UserRepository:
             return user
 
 
-class QuizRopository:
+class QuizRepository:
 
     @classmethod
     async def add_quiz(cls, quiz: QuizAdd) -> int:

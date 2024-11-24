@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from schema import *
 from fastapi import FastAPI, Depends
-from database import UserRepository, QuizRopository
+from database import UserRepository, QuizRepository
 
 
 user_router = APIRouter(prefix="/api", tags=["users"])
@@ -34,11 +34,11 @@ async def add_quiz(quiz: QuizAdd = Depends()) -> QuizId:
 
 @quiz_router.get("/quizes/")
 async def get_quizes() -> list[Quiz]:
-    quizes = await QuizRopository.get_quizes()
+    quizes = await QuizRepository.get_quizes()
     return quizes
 
 
 @quiz_router.get("/quizes/{quiz_id}/")
 async def get_quiz(quiz_id: int) -> Quiz:
-    quiz = await QuizRopository.get_quiz(id=quiz_id)
+    quiz = await QuizRepository.get_quiz(id=quiz_id)
     return quiz
