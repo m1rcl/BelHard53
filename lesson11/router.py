@@ -39,6 +39,6 @@ async def get_quizes() -> list[Quiz]:
 
 
 @quiz_router.get("/quizes/{quiz_id}/")
-async def get_quiz(quiz_id: int) -> Quiz:
+async def get_quiz(quiz_id: int) -> list[Quiz]:
     quiz = await QuizRepository.get_quiz(id=quiz_id)
     return quiz

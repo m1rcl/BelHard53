@@ -18,14 +18,15 @@ class UserOrm(Model):
     name: Mapped[str]
     age: Mapped[int]
     phone: Mapped[str | None]
-    # quizes: Mapped["QuizOrm"] = relationship(back_populates="user")
+    quizes: Mapped["QuizOrm"] = relationship(back_populates="user")
 
 
 class QuizOrm(Model):
     __tablename__ = "quiz"
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str]
-    user_id: Mapped[int]  # = mapped_column(ForeignKey("user.id"), index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
+    user: Mapped["UserOrm"] = relationship(back_populates="quizes")
 
 
 async def delete_tables():
@@ -40,12 +41,12 @@ async def create_tables():
 
 async def add_test_data():
     async with new_session() as session:
-        users = [
+        user = [
             UserOrm(name="user1", age=11),
             UserOrm(name="user2", age=22, phone="1234567"),
             UserOrm(name="user3", age=33),
         ]
-        quizes = [
+        quiz = [
             QuizOrm(name="quiz1", user_id=1),
             QuizOrm(name="quiz2", user_id=1),
             QuizOrm(name="quiz3", user_id=2),
@@ -53,8 +54,8 @@ async def add_test_data():
             QuizOrm(name="quiz5", user_id=3),
             QuizOrm(name="quiz6", user_id=3),
         ]
-        session.add_all(users)
-        session.add_all(quizes)
+        session.add_all(user)
+        session.add_all(quiz)
         await session.commit()
 
 
@@ -107,10 +108,18 @@ class QuizRepository:
             quizes = res.scalars().all()
             return quizes
 
+    # @classmethod
+    # async def get_quiz(cls, id: int) -> QuizOrm:
+    #     async with new_session() as session:
+    #         query = select(QuizOrm).filter(QuizOrm.id == id)
+    #         res = await session.execute(query)
+    #         quiz = res.scalars().first()
+    #         return quiz
+
     @classmethod
-    async def get_quiz(cls, id: int) -> QuizOrm:
+    async def get_quiz(cls, id: int) -> list[QuizOrm]:
         async with new_session() as session:
-            query = select(QuizOrm).filter(QuizOrm.id == id)
+            query = select(QuizOrm).filter(QuizOrm.user_id == id)
             res = await session.execute(query)
-            quiz = res.scalars().first()
+            quiz = res.scalars().all()
             return quiz
