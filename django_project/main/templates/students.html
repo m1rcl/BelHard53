@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Студенты {% endblock %}
+
+
+
+{% block content1_head %}
+    <h2>Студенты 1</h2>
+{% endblock %}
+
+{% block content1 %}
+    <div class="students">        
+        <div class="students-cell"> № </div>
+        <div class="students-cell"> ФИО</div>
+        <div class="students-cell"> Возраст  </div>
+        <div class="students-cell"> Пол  </div>
+
+        {% for s in students %}
+            <div class="students-cell">{{ forloop.counter}}</div>
+            <div class="students-cell"> <a href="{{ s.get_absolute_url }}">{{s.name}} {{s.surname}}</a></div>
+            <div class="students-cell"> {{s.age}} </div>
+            <div class="students-cell"> {{s.get_sex_display}} </div>            
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+
+{% block content2_head %}
+    <h2>Заголовок 2</h2>
+{% endblock %}
+
+{% block content2 %}
+    <h1>hellllooo 2</h1>
+{% endblock %}

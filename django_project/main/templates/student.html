@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Студенты {% endblock %}
+
+
+
+{% block content1_head %}
+    <h2>Студент</h2>
+{% endblock %}
+
+{% block content1 %}
+<div class="st-info">
+    <div class="photo">            
+        <img class="st-photo" src="#" alt='Нет ФОТО'>
+    </div>
+    <div class="info">
+        <p> Фамилия: {{ student.surname }}</p> 
+        <p> Имя: {{ student.name }}</p> 
+        <p> Возраст: {{ student.age }}</p>
+        <p> Курсы: 
+            {% for c in student.course.all %}
+                {{c}}{% if not forloop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block content2_head %}
+    <h2>Оценки</h2>
+{% endblock %}
+
+{% block content2 %}
+<div class="st-info">        
+    <div class="info"> Курс </div>
+    <div class="info"> Оценка </div>
+
+    {% for r in rating %}
+        <div class="info"> {{r.course}} </div>
+        <div class="info"> {{r.mark}} </div>            
+    {% endfor %}
+</div>
+{% endblock %}
